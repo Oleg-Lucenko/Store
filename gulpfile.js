@@ -55,7 +55,7 @@ const buildForHosting = series(reset, fonts, parallel(html, styles, scripts, ima
 
 export {dev};
 export {build};
-export {buildingForHosting}
+export {buildForHosting}
 
 export default build;
 
