@@ -4,6 +4,12 @@
   "description": "",
   "type": "module",
   "main": "gulpfile.js",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "start": "node tasks/server.js"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
