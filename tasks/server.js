@@ -1,7 +1,7 @@
 // import mysql from 'mysql2';
 import http from "http";
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
 
 
 // const connection = mysql.createConnection({
