@@ -4,14 +4,14 @@ import dotenv from "dotenv";
 dotenv.config();
 
 
-
 const connection = mysql.createConnection({
-    host: 'localhost',
+    host: 'localhorse',
     user: 'river',
     database: 'products',
     password: '4782D3e4',
-    port: 3306
+    port: 3309
 });
+
 
 
 
