@@ -5,9 +5,9 @@ dotenv.config();
 
 
 const connection = mysql.createConnection({
-    host: 'localhorse',
+    host: 'localhost',
     user: 'river',
-    database: 'products',
+    database: 'productsll',
     password: '4782D3e4',
     port: 3309
 });
