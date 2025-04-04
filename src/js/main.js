@@ -7,7 +7,6 @@ let sliderImages = ['img/discount_galaxy_s21.jpg', 'img/discount_iphone_16.jpg',
 let sliderImgElement = document.querySelector('.discount-img');
 
 
-
 smartphones.forEach(item => item.addEventListener('click', () => localStorage.setItem('category', 'smartphones')));
 
 laptops.forEach(item => item.addEventListener('click', () => localStorage.setItem('category', 'laptops')));
