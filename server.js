@@ -29,34 +29,46 @@ const server =  http.createServer(function(request, response){
 
 
 
-    function getProducts(category) {
+    // function getProducts(category) {
 
-        return new Promise((resolve, reject) => {
+    //     return new Promise((resolve, reject) => {
 
-            connection.query(`select * from ${category}`, function(err, results) {
+    //         connection.query(`select * from ${category}`, function(err, results) {
+    
+    //             if(err) console.log(err);    
+                
+    //             resolve(results);
+                
+    //         });
+
+    //     });
+
+    // };
+
+
+
+
+
+            connection.query(`select * from smartphones`, function(err, results) {
     
                 if(err) console.log(err);    
                 
-                resolve(results);
+                response.end(JSON.stringify(results));
                 
             });
 
-        });
 
-    };
+    // if (request.url === '/smartphones') {
 
+    //     getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
 
-    if (request.url === '/smartphones') {
+    // } else if (request.url === '/laptops') {
 
-        getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
+    //     getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
 
-    } else if (request.url === '/laptops') {
-
-        getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
-
-    } else if (request.url === '/headphones') {
-        getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
-    };
+    // } else if (request.url === '/headphones') {
+    //     getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
+    // };
        
 
 });
