@@ -57,7 +57,7 @@ const server =  http.createServer(function(request, response){
                 
             // });
 
-            response.end(JSON.stringify(results));
+            response.end('Helloj');
 
 
     // if (request.url === '/smartphones') {
