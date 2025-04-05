@@ -27,36 +27,36 @@ const server =  http.createServer(function(request, response){
 
     response.writeHead(200, headers);
 
-    response.end('Hello');
 
-    // function getProducts(category) {
 
-    //     return new Promise((resolve, reject) => {
+    function getProducts(category) {
 
-    //         connection.query(`select * from ${category}`, function(err, results) {
+        return new Promise((resolve, reject) => {
+
+            connection.query(`select * from ${category}`, function(err, results) {
     
-    //             if(err) console.log(err);    
+                if(err) console.log(err);    
                 
-    //             resolve(results);
+                resolve(results);
                 
-    //         });
+            });
 
-    //     });
+        });
 
-    // };
+    };
 
 
-    // if (request.url === '/smartphones') {
+    if (request.url === '/smartphones') {
 
-    //     getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
+        getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
 
-    // } else if (request.url === '/laptops') {
+    } else if (request.url === '/laptops') {
 
-    //     getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
+        getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
 
-    // } else if (request.url === '/headphones') {
-    //     getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
-    // };
+    } else if (request.url === '/headphones') {
+        getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
+    };
        
 
 });

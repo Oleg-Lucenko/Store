@@ -36,3 +36,5 @@ document.querySelector('.slider-btn-right').addEventListener('click', () => {
 
 
 
+
+
