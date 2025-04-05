@@ -1,15 +1,15 @@
-// import mysql from 'mysql2';
+import mysql from 'mysql2';
 import http from "http";
 import dotenv from "dotenv";
 dotenv.config();
 
 
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'river',
-//     database: 'products',
-//     password: '4782D3e4'
-// });
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'river',
+    database: 'products',
+    password: '4782D3e4'
+});
 
 
 
