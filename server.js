@@ -49,13 +49,15 @@ const server =  http.createServer(function(request, response){
 
 
 
-            connection.query(`select * from smartphones`, function(err, results) {
+            // connection.query(`select * from smartphones`, function(err, results) {
     
-                if(err) console.log(err);    
+            //     if(err) console.log(err);    
                 
-                response.end(JSON.stringify(results));
+            //     response.end(JSON.stringify(results));
                 
-            });
+            // });
+
+            response.end(JSON.stringify(results));
 
 
     // if (request.url === '/smartphones') {
