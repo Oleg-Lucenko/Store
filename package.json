@@ -33,7 +33,10 @@
     "gulp-ttf2woff": "^2.0.0",
     "gulp-ttf2woff2": "^5.0.0",
     "gulp-uglify-es": "^3.0.0",
-    "mysql2": "^3.11.4",
-    "sass": "^1.77.4"
+    "sass": "^1.77.4",
+    "sequelize": "^6.11.0"
+  },
+  "dependencies": {
+    "mysql2": "^3.14.0"
   }
 }

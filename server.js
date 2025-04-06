@@ -1,4 +1,5 @@
 import mysql from 'mysql2';
+import sequelize from 'sequelize';
 import http from "http";
 import dotenv from "dotenv";
 dotenv.config();
