@@ -1,4 +1,4 @@
-import mysql from 'mysql2';
+import mysql2 from 'mysql2';
 import Sequelize from 'sequelize';
 import http from "http";
 import dotenv from "dotenv";
@@ -20,7 +20,8 @@ const sequelize = new Sequelize(
     '4782D3e4',
     {
         host: 'localhost',
-        dialect: 'mysql'
+        dialect: 'mysql',
+        dialectModule: mysql2
     }
 );
 
@@ -32,18 +33,6 @@ sequelize.authenticate().then(() => {
  });
 
 
-// const smartphone = sequelize.define( 'smartphones', {
-
-//     name: {
-//         type: Sequelize.STRING,
-//         get() {
-//             const content = this.getDataValue('name');
-//         } 
-//     }
-
-// })
-// console.log(smartphone.name.type);
-// console.log(smartphone);
 
 const allSmartphones = await sequelize.query('SELECT * FROM `smartphones`', {
   type: Sequelize.SELECT,
