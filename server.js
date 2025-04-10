@@ -10,7 +10,7 @@ const connection = mysql({
         user: 'river',
         database: 'products',
         password: '4782D3e4',
-        port: 3306
+        socketPath: '/tmp/mysql.sock'
     }
 });
 
