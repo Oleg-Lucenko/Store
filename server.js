@@ -1,42 +1,21 @@
-import mysql2 from 'mysql2';
-import Sequelize from 'sequelize';
+import mysql from 'serverless-mysql';
 import http from "http";
 import dotenv from "dotenv";
 dotenv.config();
 
 
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'river',
-//     database: 'products',
-//     password: '4782D3e4',
-//     port: 3306
-// });
-
-const sequelize = new Sequelize(
-
-    'products',
-    'river',
-    '4782D3e4',
-    {
+const connection = mysql({
+    config: {
         host: 'localhost',
-        dialect: 'mysql',
-        dialectModule: mysql2
+        user: 'river',
+        database: 'products',
+        password: '4782D3e4',
+        port: 3306
     }
-);
-
-
-sequelize.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
- }).catch((error) => {
-    console.error('Unable to connect to the database: ', error);
- });
-
-
-
-const allSmartphones = await sequelize.query('SELECT * FROM `smartphones`', {
-  type: Sequelize.SELECT,
 });
+
+
+
 
 
 
@@ -73,13 +52,13 @@ const server =  http.createServer(function(request, response){
 
 
 
-            // connection.query(`select * from smartphones`, function(err, results) {
+            connection.query(`select * from smartphones`, function(err, results) {
     
-            //     if(err) console.log(err);    
+                if(err) console.log(err);    
                 
+                response.end(JSON.stringify(results));
                 
-            // });
-            response.end(JSON.stringify(allSmartphones));
+            });
 
             
 
