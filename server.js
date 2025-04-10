@@ -1,18 +1,18 @@
-// import mysql from 'serverless-mysql';
+import mysql from 'serverless-mysql';
 import http from "http";
 import dotenv from "dotenv";
 dotenv.config();
 
 
-// const connection = mysql({
-//     config: {
-//         host: 'localhost',
-//         user: 'river',
-//         database: 'products',
-//         password: '4782D3e4',
-//         port: 3306
-//     }
-// });
+const connection = mysql({
+    config: {
+        host: 'localhost',
+        user: 'river',
+        database: 'products',
+        password: '4782D3e4',
+        port: 3306
+    }
+});
 
 
 
@@ -52,14 +52,14 @@ const server =  http.createServer(function(request, response){
 
 
 
-            // connection.query(`select * from smartphones`, function(err, results) {
+            connection.query(`select * from smartphones`, function(err, results) {
     
-            //     if(err) console.log(err);    
+                if(err) console.log(err);    
                 
+                response.end(JSON.stringify(results));
                 
-            // });
-            
-            response.end('daqqw');
+            });
+
             
 
     // if (request.url === '/smartphones') {
