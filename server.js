@@ -49,16 +49,23 @@ const server =  http.createServer(function(request, response){
     // };
 
 
+function getData() {
 
+return new Promise((resolve, reject) => {
 
+       connection.query(`select * from smartphones`, function(err, results) {
+   
+           if(err) console.log(err);    
+           
+           resolve(results);
+           
+       });
 
-            connection.query(`select * from smartphones`, function(err, results) {
-    
-                if(err) console.log(err);    
-                
-                response.end(results);
-                
-            });
+   });
+
+};
+
+getData().then(result => (response.end(JSON.stringify(result))));
 
             
 

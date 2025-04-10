@@ -1,0 +1,38 @@
+footer {
+
+    background-color: #fbc75c;
+    .footer-top {
+        display: flex;
+        justify-content: space-around;
+
+
+        .footer-amber-about {
+            display: flex;
+            width: 40%;
+            gap: 50px;
+            padding: 40px 0 0;
+
+            &::after {
+                content: '';
+                border-right: 2px solid rgb(239, 189, 51);
+                height: 100%;
+            }
+        }
+
+        .footer-contacts {
+            span {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    }
+
+    .logo2 {
+        height: 120px;
+        width: 140px;
+    }
+}
+
+
+
+
