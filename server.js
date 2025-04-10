@@ -56,7 +56,7 @@ const server =  http.createServer(function(request, response){
     
                 if(err) console.log(err);    
                 
-                response.end(JSON.stringify(results));
+                response.end('rwwr');
                 
             });
 
