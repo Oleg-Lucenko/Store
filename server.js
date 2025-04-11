@@ -8,7 +8,8 @@ const connection = mysql({
     config: {
         user: 'river',
         database: 'products',
-        password: '4782D3e4'
+        password: '4782D3e4',
+        socketPath: '/tmp/mysql.sock'
     }
 });
 
