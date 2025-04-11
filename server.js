@@ -9,7 +9,7 @@ const connection = mysql({
         user: 'river',
         database: 'products',
         password: '4782D3e4',
-        socketPath: '/tmp/mysql.sock'
+        socketPath: '/tmp/mysqdnwadajnl.sock'
     }
 });
 
