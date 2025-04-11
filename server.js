@@ -6,7 +6,6 @@ dotenv.config();
 
 const connection = mysql({
     config: {
-        host: '127.0.0.1',
         user: 'river',
         database: 'products',
         password: '4782D3e4'
