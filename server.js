@@ -66,6 +66,7 @@ return new Promise((resolve, reject) => {
 
 getData().then(result => (response.end(JSON.stringify(result))));
 
+connection.end();
             
 
     // if (request.url === '/smartphones') {
