@@ -65,9 +65,8 @@ return result;
 
 };
 
-getData().then(result => (response.end(JSON.stringify(result))));
+getData().then(result => (response.end(JSON.stringify(result)))).then(mysql.end());
 
-mysql.end();
 
 
             
