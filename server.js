@@ -22,9 +22,8 @@ const server =  http.createServer(function(request, response){
 
 
     const headers = {
-        'Access-Control-Allow-Origin':'<origin>',
+        'Access-Control-Allow-Origin':'*',
         'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
-        'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept"
     };
 
     response.writeHead(200, headers);
