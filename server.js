@@ -1,22 +1,19 @@
-import mysql from 'serverless-mysql';
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const mysql =  require('serverless-mysql')();
 import http from "http";
 import dotenv from "dotenv";
 dotenv.config();
 
 
-const connection = mysql({
-    config: {
+mysql.config({
         host: '127.0.0.1',
         user: 'river',
         database: 'products',
         password: '4782D3e4'
-    }
 });
 
-
-
-
-
+let results = await mysql.query('SELECT * FROM smartphones');
 
 const server =  http.createServer(function(request, response){
 
@@ -27,7 +24,7 @@ const server =  http.createServer(function(request, response){
         'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept"
     };
 
-    // response.writeHead(200, headers);
+    response.writeHead(200, headers);
 
 
 
@@ -48,24 +45,28 @@ const server =  http.createServer(function(request, response){
     // };
 
 
-function getData() {
+// function getData() {
 
-return new Promise((resolve, reject) => {
+// return new Promise((resolve, reject) => {
 
-       connection.query(`select * from smartphones`, function(err, results) {
+//        connection.query(`select * from smartphones`, function(err, results) {
    
-           if(err) console.log(err);    
+//            if(err) console.log(err);    
            
-           resolve(results);
+//            resolve(results);
            
-       });
+//        });
 
-   });
+//    });
 
-};
+// };
 
-getData().then(result => (response.end(JSON.stringify(result))));
+// getData().then(result => (response.end(JSON.stringify(result))));
+
+
             
+  response.end(JSON.stringify(results));
+
 
     // if (request.url === '/smartphones') {
 
