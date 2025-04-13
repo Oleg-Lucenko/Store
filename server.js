@@ -22,7 +22,6 @@ const server =  http.createServer(function(request, response){
 
 
     const headers = {
-        'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
     };
 
     response.writeHead(200, headers);
