@@ -13,7 +13,8 @@ mysql.config({
         password: '4782D3e4'
 });
 
-let results = await mysql.query('SELECT * FROM smartphones');
+
+
 
 const server =  http.createServer(function(request, response){
 
@@ -45,7 +46,9 @@ const server =  http.createServer(function(request, response){
     // };
 
 
-// function getData() {
+async function getData() {
+
+let result = await mysql.query('SELECT * FROM smartphones');
 
 // return new Promise((resolve, reject) => {
 
@@ -58,14 +61,14 @@ const server =  http.createServer(function(request, response){
 //        });
 
 //    });
+return result;
 
-// };
+};
 
-// getData().then(result => (response.end(JSON.stringify(result))));
+getData().then(result => (response.end(JSON.stringify(result))));
 
 
             
-  response.end(JSON.stringify(results));
 
 
     // if (request.url === '/smartphones') {
