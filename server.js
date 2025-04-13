@@ -67,6 +67,8 @@ return result;
 
 getData().then(result => (response.end(JSON.stringify(result))));
 
+mysql.end();
+
 
             
 
