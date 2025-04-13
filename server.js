@@ -46,29 +46,30 @@ const server =  http.createServer(function(request, response){
     // };
 
 
-async function getData() {
+// async function getData() {
 
-let result = await mysql.query('SELECT * FROM smartphones');
+// let result = await mysql.query('SELECT * FROM smartphones');
 
-// return new Promise((resolve, reject) => {
+// return result;
 
-//        connection.query(`select * from smartphones`, function(err, results) {
-   
-//            if(err) console.log(err);    
-           
-//            resolve(results);
-           
-//        });
+// };
 
-//    });
-return result;
-
-};
-
-getData().then(result => (response.end(JSON.stringify(result)))).then(mysql.end());
+// getData().then(result => (response.end(JSON.stringify(result))));
 
 
+// Main handler function
+let handler = async (event, context) => {
+    // Run your query
+    let results = await mysql.query('SELECT * FROM smartphones')
+  
+    // Run clean up function
+    await mysql.end()
+  
+    // Return the results
+    return results
+  }
 
+handler().then(result => (response.end(JSON.stringify(result))));
             
 
 
