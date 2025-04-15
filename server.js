@@ -1,17 +1,19 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-const mysql =  require('serverless-mysql')();
+
 import http from "http";
 import dotenv from "dotenv";
 dotenv.config();
 
 
-mysql.config({
-        host: '127.0.0.1',
-        user: 'river',
-        database: 'products',
-        password: '4782D3e4'
-});
+const mysql = require('serverless-mysql')({
+    config: {
+      host     : process.env.ENDPOINT,
+      database : process.env.DATABASE,
+      user     : process.env.USERNAME,
+      password : process.env.PASSWORD
+    }
+  })
 
 
 
@@ -58,20 +60,20 @@ const server =  http.createServer(function(request, response){
 
 
 // Main handler function
-// let handler = async (event, context) => {
-//     // Run your query
-//     let results = await mysql.query('SELECT * FROM smartphones')
+let handler = async (event, context) => {
+    // Run your query
+    let results = await mysql.query('SELECT * FROM smartphones')
   
-//     // Run clean up function
-//     await mysql.end()
+    // Run clean up function
+    await mysql.end()
   
-//     // Return the results
-//     return results
-//   }
+    // Return the results
+    return results
+  }
 
-// handler().then(result => (response.end(JSON.stringify(result))));
+handler().then(result => (response.end(JSON.stringify(result))));
 
-response.end(JSON.stringify('qqqwwe'))
+
             
 
 
