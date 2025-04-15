@@ -1,7 +1,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const mysql =  require('serverless-mysql')();
-import https from "https";
+import http from "http";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -16,7 +16,7 @@ mysql.config({
 
 
 
-const server =  https.createServer(function(request, response){
+const server =  http.createServer(function(request, response){
 
 
     const headers = {
@@ -58,18 +58,20 @@ const server =  https.createServer(function(request, response){
 
 
 // Main handler function
-let handler = async (event, context) => {
-    // Run your query
-    let results = await mysql.query('SELECT * FROM smartphones')
+// let handler = async (event, context) => {
+//     // Run your query
+//     let results = await mysql.query('SELECT * FROM smartphones')
   
-    // Run clean up function
-    await mysql.end()
+//     // Run clean up function
+//     await mysql.end()
   
-    // Return the results
-    return results
-  }
+//     // Return the results
+//     return results
+//   }
 
-handler().then(result => (response.end(JSON.stringify(result))));
+// handler().then(result => (response.end(JSON.stringify(result))));
+
+response.end(JSON.stringify('qqqwwe'))
             
 
 
