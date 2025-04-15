@@ -1,7 +1,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const mysql =  require('serverless-mysql')();
-import http from "http";
+import https from "https";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -16,7 +16,7 @@ mysql.config({
 
 
 
-const server =  http.createServer(function(request, response){
+const server =  https.createServer(function(request, response){
 
 
     const headers = {
