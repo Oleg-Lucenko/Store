@@ -9,9 +9,9 @@ dotenv.config();
 const mysql = require('serverless-mysql')({
     config: {
         host: '127.0.0.1',
-        user: 'ria',
-        database: 'produs',
-        password: '4782ffe4'
+        user: 'river',
+        database: 'products',
+        password: '4782D3e4'
     }
   })
 

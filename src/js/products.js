@@ -12,7 +12,7 @@ function productsRequest(category) {
     
         `${responce.map(product => (
             `<a class='product-link'>
-                <img src=${product.imgPath} />
+                <img src=${product.img_path} />
                 <p>${product.name}</p>
                 <span class='product-price'> $ ${product.price}</span>
             </a>`
