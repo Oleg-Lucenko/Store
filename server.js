@@ -64,7 +64,7 @@ const server =  http.createServer(function(request, response){
 // Main handler function
 let handler = async (event, context) => {
     // Run your query
-    let results = await mysql.query('SELECT * FROM smartphones')
+    let results = await mysql.query('SELECT * FROM Smartphones')
   
     // Run clean up function
     await mysql.end()
