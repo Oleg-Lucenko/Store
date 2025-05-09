@@ -11,7 +11,7 @@ const mysql = require('serverless-mysql')({
         host: 'crossover.proxy.rlwy.net',
         port: 53764,
         user: 'root',
-        database: 'products',
+        database: 'railway',
         password: 'fQoSyCpjxmohzjQcNHJciDgeGZfsRwLm'
     }
   })
