@@ -27,10 +27,7 @@ const mysql = require('serverless-mysql')({
     if (url.endsWith('/smartphones')) table = 'Smartphones';
     else if (url.endsWith('/laptops')) table = 'Laptops';
     else if (url.endsWith('/headphones')) table = 'Headphones';
-    else {
-      res.status(404).json({ error: 'Not found' });
-      return;
-    }
+
   
     try {
       const products = await mysql.query(`SELECT * FROM ${table}`);
