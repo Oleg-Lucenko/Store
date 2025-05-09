@@ -17,61 +17,85 @@ const mysql = require('serverless-mysql')({
   })
 
 
+  export default async function handler(req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  
+    const { url } = req;
+  
+    let table;
+  
+    if (url.endsWith('/smartphones')) table = 'Smartphones';
+    else if (url.endsWith('/laptops')) table = 'Laptops';
+    else if (url.endsWith('/headphones')) table = 'Headphones';
+    else {
+      res.status(404).json({ error: 'Not found' });
+      return;
+    }
+  
+    try {
+      const products = await mysql.query(`SELECT * FROM ${table}`);
+      await mysql.end();
+      res.status(200).json(products);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
 
 
 
-const server =  http.createServer(function(request, response){
+// const server =  http.createServer(function(request, response){
 
 
-    const headers = {
-        'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
-        'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept"
-    };
+//     const headers = {
+//         'Access-Control-Allow-Origin':'*',
+//         'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+//         'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept"
+//     };
 
-    response.writeHead(200, headers);
+//     response.writeHead(200, headers);
 
 
 
-    function getProducts(category) {
+//     function getProducts(category) {
 
-        return new Promise((resolve, reject) => {
+//         return new Promise((resolve, reject) => {
 
-            mysql.query(`select * from ${category}`, function(err, results) {
+//             mysql.query(`select * from ${category}`, function(err, results) {
     
-                if(err) console.log(err);    
+//                 if(err) console.log(err);    
                 
-                resolve(results);
+//                 resolve(results);
                 
-            });
+//             });
 
-        });
+//         });
 
-    };
+//     };
 
             
 
 
-    if (request.url === '/smartphones') {
+//     if (request.url === '/smartphones') {
 
-        getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
+//         getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
 
-    } else if (request.url === '/laptops') {
+//     } else if (request.url === '/laptops') {
 
-        getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
+//         getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
 
-    } else if (request.url === '/headphones') {
-        getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
-    } else if (request.url === '/') {
-        response.end(JSON.stringify(''))
-    }
+//     } else if (request.url === '/headphones') {
+//         getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
+//     } else if (request.url === '/') {
+//         response.end(JSON.stringify(''))
+//     }
        
 
-});
+// });
 
 
 
-server.listen(3001);
+// server.listen(3001);
 
 
 
