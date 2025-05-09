@@ -8,10 +8,11 @@ dotenv.config();
 
 const mysql = require('serverless-mysql')({
     config: {
-        host: '192.168.0.65',
-        user: 'river',
-        database: 'products',
-        password: '4782D3e4'
+        host: 'crossover.proxy.rlwy.net',
+        port: 53764,
+        user: 'root',
+        database: 'railway',
+        password: 'fQoSyCpjxmohzjQcNHJciDgeGZfsRwLm'
     }
   })
 
