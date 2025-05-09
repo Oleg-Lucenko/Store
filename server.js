@@ -33,21 +33,21 @@ const server =  http.createServer(function(request, response){
 
 
 
-    // function getProducts(category) {
+    function getProducts(category) {
 
-    //     return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
 
-    //         connection.query(`select * from ${category}`, function(err, results) {
+            mysql.query(`select * from ${category}`, function(err, results) {
     
-    //             if(err) console.log(err);    
+                if(err) console.log(err);    
                 
-    //             resolve(results);
+                resolve(results);
                 
-    //         });
+            });
 
-    //     });
+        });
 
-    // };
+    };
 
 
 // async function getData() {
@@ -62,34 +62,34 @@ const server =  http.createServer(function(request, response){
 
 
 // Main handler function
-let handler = async (event, context) => {
-    // Run your query
-    let results = await mysql.query('SELECT * FROM Smartphones')
+// let handler = async (event, context) => {
+//     // Run your query
+//     let results = await mysql.query('SELECT * FROM Smartphones')
   
-    // Run clean up function
-    await mysql.end()
+//     // Run clean up function
+//     await mysql.end()
   
-    // Return the results
-    return results
-  }
+//     // Return the results
+//     return results
+//   }
 
-handler().then(result => (response.end(JSON.stringify(result))));
+// handler().then(result => (response.end(JSON.stringify(result))));
 
 
             
 
 
-    // if (request.url === '/smartphones') {
+    if (request.url === '/smartphones') {
 
-    //     getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
+        getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
 
-    // } else if (request.url === '/laptops') {
+    } else if (request.url === '/laptops') {
 
-    //     getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
+        getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
 
-    // } else if (request.url === '/headphones') {
-    //     getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
-    // };
+    } else if (request.url === '/headphones') {
+        getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
+    };
        
 
 });
