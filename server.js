@@ -49,16 +49,31 @@ const server =  http.createServer(function(request, response){
 
     };
 
+            
 
-// async function getData() {
 
-// let result = await mysql.query('SELECT * FROM smartphones');
+    if (request.url === '/smartphones') {
 
-// return result;
+        getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
 
-// };
+    } else if (request.url === '/laptops') {
 
-// getData().then(result => (response.end(JSON.stringify(result))));
+        getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
+
+    } else if (request.url === '/headphones') {
+        getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
+    } else if (request.url === '/') {
+        response.end(JSON.stringify(''))
+    }
+       
+
+});
+
+
+
+server.listen(3001);
+
+
 
 
 // Main handler function
@@ -74,27 +89,3 @@ const server =  http.createServer(function(request, response){
 //   }
 
 // handler().then(result => (response.end(JSON.stringify(result))));
-
-
-            
-
-
-    if (request.url === '/smartphones') {
-
-        getProducts('Smartphones').then(products => response.end(JSON.stringify(products))); 
-
-    } else if (request.url === '/laptops') {
-
-        getProducts('Laptops').then(products => response.end(JSON.stringify(products)));
-
-    } else if (request.url === '/headphones') {
-        getProducts('Headphones').then(products => response.end(JSON.stringify(products)));
-    };
-       
-
-});
-
-
-
-server.listen(3001);
-
