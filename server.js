@@ -19,24 +19,52 @@ const mysql = require('serverless-mysql')({
 
   export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
+
+        function getProducts(category) {
+
+        return new Promise((resolve, reject) => {
+
+            mysql.query(`select * from ${category}`, function(err, results) {
+    
+                if(err) console.log(err);    
+                
+                resolve(results);
+                
+            });
+
+        });
+
+    };
   
-    const { url } = req;
   
     let table;
   
-    if (url.endsWith('/smartphones')) table = 'Smartphones';
-    else if (url.endsWith('/laptops')) table = 'Laptops';
-    else if (url.endsWith('/headphones')) table = 'Headphones';
+    if (req.url === '/smartphones') {
+        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+        mysql.end();
+    }
+    else if (req.url === '/laptops') {        
+        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+        mysql.end();
+    }
+    else if (req.url === '/headphones') {
+        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+        mysql.end();
+    }
+    else {
+        res.status(200).end('');
+        return;
+    }
 
   
-    try {
-      const products = await mysql.query(`SELECT * FROM ${table}`);
-      await mysql.end();
-      res.status(200).json(products);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Internal server error' });
-    }
+    // try {
+    //   const products = await mysql.query(`SELECT * FROM ${table}`);
+    //   await mysql.end();
+    //   res.status(200).json(products);
+    // } catch (err) {
+    //   console.error(err);
+    //   res.status(500).json({ error: 'Internal server error' });
+    // }
   }
 
 
