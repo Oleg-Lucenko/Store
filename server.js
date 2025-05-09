@@ -18,7 +18,14 @@ const mysql = require('serverless-mysql')({
 
 
   export default async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    const headers = {
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+        'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept"
+    };
+
+    res.writeHead(200, headers);
 
         function getProducts(category) {
 
@@ -37,7 +44,6 @@ const mysql = require('serverless-mysql')({
     };
   
   
-    let table;
   
     if (req.url === '/smartphones') {
         getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
