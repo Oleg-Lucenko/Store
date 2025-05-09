@@ -8,7 +8,8 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "node tasks/server.js"
+    "start": "node tasks/server.js",
+    "build": "gulp"
   },
   "author": "",
   "license": "ISC",
