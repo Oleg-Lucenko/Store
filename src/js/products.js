@@ -6,7 +6,7 @@ function productsRequest(category) {
 
     if (productsContainer.hasChildNodes())  productsContainer.clear() && localStorage.clear();
    
-    fetch(`api/server/?category=${category}`).then(responce => responce.text())
+    fetch(`/api/server/?category=${category}`).then(responce => responce.text())
     .then(response => JSON.parse(response))
     .then(responce => productsContainer.insertAdjacentHTML('afterbegin', 
     
