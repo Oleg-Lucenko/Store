@@ -28,48 +28,51 @@ const mysql = require('serverless-mysql')({
 
     res.writeHead(200, headers);
 
-    const url = new URL(req.url, `http://${req.headers.host}`);
-    const category = url.searchParams.get('category');
-    // console.log('categ:', category);
-    console.log(req.url);
+    // const url = new URL(req.url, `http://${req.headers.host}`);
+    // const category = url.searchParams.get('category');
+    // // console.log('categ:', category);
+    // console.log(req.url);
   
-    // Временно — проверь, что вообще попадаешь в этот код
-    res.status(200).end(JSON.stringify([{ test: true, category }]));
+    // // Временно — проверь, что вообще попадаешь в этот код
+    // res.status(200).end(JSON.stringify([{ test: true, category }]));
 
-    //     function getProducts(category) {
-
-    //     return new Promise((resolve, reject) => {
-
-    //         mysql.query(`select * from ${category}`, function(err, results) {
     
-    //             if(err) console.log(err);    
-                
-    //             resolve(results);
-                
-    //         });
+    function getProducts(category) {
+        
+        return new Promise((resolve, reject) => {
 
-    //     });
-
-    // };
+            mysql.query(`select * from ${category}`, function(err, results) {
+                
+                if(err) console.log(err);    
+                
+                resolve(results);
+                
+            });
+            
+        });
+        
+    };
+    
+    
+    const category = url.searchParams.get('category');
   
   
-  
-    // if (req.url === '/smartphones') {
-    //     getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
-    //     mysql.end();
-    // }
-    // else if (req.url === '/laptops') {        
-    //     getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
-    //     mysql.end();
-    // }
-    // else if (req.url === '/headphones') {
-    //     getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
-    //     mysql.end();
-    // }
-    // else {
-    //     res.status(200).end('');
-    //     return;
-    // }
+    if (category === 'smartphones') {
+        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+        mysql.end();
+    }
+    else if (category === 'laptops') {        
+        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+        mysql.end();
+    }
+    else if (category === 'headphones') {
+        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+        mysql.end();
+    }
+    else {
+        res.status(200).end('');
+        return;
+    }
 
   
 }
