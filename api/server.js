@@ -30,7 +30,8 @@ const mysql = require('serverless-mysql')({
 
     const url = new URL(req.url, `http://${req.headers.host}`);
     const category = url.searchParams.get('category');
-    console.log('categ:', category);
+    // console.log('categ:', category);
+    console.log(req.url);
   
     // Временно — проверь, что вообще попадаешь в этот код
     res.status(200).end(JSON.stringify([{ test: true, category }]));
