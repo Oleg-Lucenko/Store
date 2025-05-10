@@ -61,11 +61,11 @@ const mysql = require('serverless-mysql')({
         mysql.end();
     }
     else if (category === 'laptops') {        
-        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+        getProducts('Laptops').then(products => res.end(JSON.stringify(products)));
         mysql.end();
     }
     else if (category === 'headphones') {
-        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+        getProducts('Headphones').then(products => res.end(JSON.stringify(products)));
         mysql.end();
     }
     else {
