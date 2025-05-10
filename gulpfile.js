@@ -49,7 +49,6 @@ const build = series(reset, fonts, parallel(html, styles, scripts, images), revi
 
 export {dev};
 export {build};
-export {buildForHosting}
 
 export default build;
 
