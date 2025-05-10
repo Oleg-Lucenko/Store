@@ -43,8 +43,8 @@ function watcher() {
 };
 
 const dev = series(reset, fonts, parallel(html, styles, scripts, images), parallel(watcher, browsersync));
-const build = series(reset, fonts, parallel(html, styles, scripts, images), revisionCSS, revisionJS, replaceRevNames, browsersync);
-const buildForHosting = series(reset, fonts, parallel(html, styles, scripts, images), revisionCSS, revisionJS, replaceRevNames);
+const build = series(reset, fonts, parallel(html, styles, scripts, images), revisionCSS, revisionJS, replaceRevNames);
+
 
 
 export {dev};
