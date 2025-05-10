@@ -22,58 +22,66 @@ const mysql = require('serverless-mysql')({
     const headers = {
         'Access-Control-Allow-Origin':'*',
         'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
-        'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept"
+        'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept",
+        'Content-Type': 'application/json'
     };
 
     res.writeHead(200, headers);
 
-        function getProducts(category) {
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    const category = url.searchParams.get('category');
+    console.log('category:', category);
+  
+    // Временно — проверь, что вообще попадаешь в этот код
+    res.status(200).end(JSON.stringify([{ test: true, category }]));
 
-        return new Promise((resolve, reject) => {
+    //     function getProducts(category) {
 
-            mysql.query(`select * from ${category}`, function(err, results) {
+    //     return new Promise((resolve, reject) => {
+
+    //         mysql.query(`select * from ${category}`, function(err, results) {
     
-                if(err) console.log(err);    
+    //             if(err) console.log(err);    
                 
-                resolve(results);
+    //             resolve(results);
                 
-            });
+    //         });
 
-        });
+    //     });
 
-    };
+    // };
   
   
   
-    if (req.url === '/smartphones') {
-        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
-        mysql.end();
-    }
-    else if (req.url === '/laptops') {        
-        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
-        mysql.end();
-    }
-    else if (req.url === '/headphones') {
-        getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
-        mysql.end();
-    }
-    else {
-        res.status(200).end('');
-        return;
-    }
-
-  
-    // try {
-    //   const products = await mysql.query(`SELECT * FROM ${table}`);
-    //   await mysql.end();
-    //   res.status(200).json(products);
-    // } catch (err) {
-    //   console.error(err);
-    //   res.status(500).json({ error: 'Internal server error' });
+    // if (req.url === '/smartphones') {
+    //     getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+    //     mysql.end();
     // }
-  }
+    // else if (req.url === '/laptops') {        
+    //     getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+    //     mysql.end();
+    // }
+    // else if (req.url === '/headphones') {
+    //     getProducts('Smartphones').then(products => res.end(JSON.stringify(products)));
+    //     mysql.end();
+    // }
+    // else {
+    //     res.status(200).end('');
+    //     return;
+    // }
+
+  
+}
 
 
+// try {
+//   const products = await mysql.query(`SELECT * FROM ${table}`);
+//   await mysql.end();
+//   res.status(200).json(products);
+// } catch (err) {
+//   console.error(err);
+//   res.status(500).json({ error: 'Internal server error' });
+// }
 
 // const server =  http.createServer(function(request, response){
 
