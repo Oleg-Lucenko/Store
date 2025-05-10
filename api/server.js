@@ -28,7 +28,6 @@ const mysql = require('serverless-mysql')({
 
     res.writeHead(200, headers);
 
-    // const url = new URL(req.url, `http://${req.headers.host}`);
     // const category = url.searchParams.get('category');
     // // console.log('categ:', category);
     // console.log(req.url);
@@ -52,8 +51,8 @@ const mysql = require('serverless-mysql')({
         });
         
     };
-    
-    
+
+    const url = new URL(req.url, `http://${req.headers.host}`);
     const category = url.searchParams.get('category');
   
   
